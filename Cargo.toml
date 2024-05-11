@@ -1,0 +1,26 @@
+[package]
+name = "axum-static-web-server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "your_executable_name"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+askama = "0.12"
+axum = "0.6"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.4.0", features = ["fs", "trace"] }
+# serialization/deserialization  for JSON
+serde = { version = "1.0.104", features = ["derive"] }
+
+serde_json = "1.0.48"
+
+# async HTTP client
+reqwest = { version = "0.11.20", features = ["json"] }
