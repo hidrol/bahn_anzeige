@@ -19,10 +19,10 @@
       nixosModules.default = { config, lib, pkgs, ... }:
         with lib;
         let
-          cfg = config.bahn_anzeige;
+          cfg = config.services.bahn_anzeige;
         in
         {
-          options.bahn_anzeige = {
+          options.services.bahn_anzeige = {
             enable = mkEnableOption "Enable the Douglas Adams quotes service";
 
             # logLevel = mkOption {
