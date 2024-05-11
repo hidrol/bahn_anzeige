@@ -205,9 +205,13 @@ async fn get_bahndata() -> Result<Vec<BahnFilter>, reqwest::Error> {
         .iter()
         .filter(|item| {
             (item.destination.id == "445363"
-                || item.destination.id == "443394"
-                || item.destination.id == "360940"
+                || item.destination.id == "443394" //7 moltkestrasse
+                || item.destination.id == "360940" //3 bocklemuend
                 || item.destination.id == "443402"
+                || item.destination.id == "441351" // 14 keupstrasse
+                || item.destination.id == "445363" //7 benzelrath frechen
+                || item.destination.id == "440482" //4 bickendorf 
+                || item.destination.id == "440769" //14 ebertplatz
                 || item.destination.id == "443370")
             && item.when.is_some()
         })
