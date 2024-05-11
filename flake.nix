@@ -23,7 +23,7 @@
         in
         {
           options.services.bahn_anzeige = {
-            enable = mkEnableOption "Enable the Douglas Adams quotes service";
+            enable = mkEnableOption "Enable the bahn_anzeige service";
 
             # logLevel = mkOption {
             #   type = with types; enum [ "DEBUG" "INFO" "ERROR" ];
@@ -52,6 +52,7 @@
               serviceConfig = {
                 DynamicUser = "yes";
                 #ExecStart = "${cfg.package}/bin/bahn_anzeige --slog-level=${cfg.logLevel} --addr=:${toString cfg.port}";
+                WorkingDirectory= "${cfg.package}/bin";
                 ExecStart = "${cfg.package}/bin/bahn_anzeige";
                 Restart = "on-failure";
                 RestartSec = "5s";
