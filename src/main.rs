@@ -199,15 +199,16 @@ async fn get_bahndata() -> Result<Vec<BahnFilter>, reqwest::Error> {
         .await?
         .json()
         .await?;
+    println!("{:#?}", bahndata);
 
     let bahnfilter: Vec<BahnFilter> = bahndata
         .iter()
         .filter(|item| {
-            item.destination.id == "445363"
+            (item.destination.id == "445363"
                 || item.destination.id == "443394"
                 || item.destination.id == "360940"
                 || item.destination.id == "443402"
-                || item.destination.id == "443370"
+                || item.destination.id == "443370")
             && item.when.is_some()
         })
         .map(|item| BahnFilter {
