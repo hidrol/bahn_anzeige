@@ -213,7 +213,7 @@ async fn get_bahndata() -> Result<Vec<BahnFilter>, reqwest::Error> {
                 || item.destination.id == "440482" //4 bickendorf 
                 || item.destination.id == "440769" //14 ebertplatz
                 || item.destination.id == "443370")
-            && item.when.is_some()
+            && (item.when.is_some())
         })
         .map(|item| BahnFilter {
             //time: item.when.clone().unwrap_or("cancelled".to_string())[11..16].to_string(),
