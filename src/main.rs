@@ -153,9 +153,9 @@ struct CurrentTripPosition {
 #[derive(Debug, Serialize, Deserialize)]
 struct Remarks {
     #[serde(rename = "type")]
-    typel: String,
-    code: String,
-    text: String,
+    typel: Option<String>,
+    code: Option<String>,
+    text: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -177,10 +177,6 @@ struct BahnData {
     remarks: Vec<Remarks>,
     origin: Option<String>,
     destination: Destination,
-    //#[serde(rename = "currentTripPosition")]
-    //current_trip_position: CurrentTripPosition,
-
-    //remarks: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -191,7 +187,7 @@ struct BahnFilter {
 }
 
 async fn get_bahndata() -> Result<Vec<BahnFilter>, reqwest::Error> {
-    //async fn get_bahndata () -> Result<Vec<BahnData>, reqwest::Error> {
+    // async fn get_bahndata () -> Result<Vec<BahnData>, reqwest::Error> {
     let bahndata: Vec<BahnData> = reqwest::Client::new()
         //.get("https://jsonplaceholder.typicode.com/todos?userId=1")
         .get("https://v5.db.transport.rest/stops/443427/departures?duration=40")
@@ -224,7 +220,7 @@ async fn get_bahndata() -> Result<Vec<BahnFilter>, reqwest::Error> {
     println!("{:#?}", bahnfilter);
 
     Ok(bahnfilter)
-    //Ok(bahndata)
+    // Ok(bahndata)
 }
 
 async fn get_data() -> String {
